@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  frontend:
+    image: "dnc117/ansible-demo:latest"
+    ports:
+      - "2222:22"
+      - "8080:80"
+    volumes:
+      - ./frontend:/opt/frontend
+    environment:
+      ENV: dev
+    command: ["tail"]
+    tty: true
+    hostname: frontend
+  backend:
+    image: "dnc117/ansible-demo:latest"
+    ports:
+      - "2223:22"
+      - "8081:80"
+    volumes:
+      - ./backend:/opt/backend
+    environment:
+      ENV: dev
+    command: ["tail"]
+    tty: true
+    hostname: backend
+
+  databe:
+    image: "dnc117/ansible-demo:latest"
+    ports:
+      - "2224:22"
+      - "8082:80"
+    volumes:
+      - ./database:/opt/database
+    environment:
+      ENV: dev
+    command: ["tail"]
+    tty: true
+    hostname: database
